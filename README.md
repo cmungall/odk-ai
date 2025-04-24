@@ -14,6 +14,10 @@ Use `run.sh`, or just do this:
 
 You can use this just as you would use claude code
 
+It might not be able to open a browser [TODO], so follow instructions and enter code.
+
+Config will be in `/root/.claude.json`
+
 ## Headless mode
 
 - create ontologies in YOLO mode
