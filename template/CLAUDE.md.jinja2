@@ -1,0 +1,62 @@
+# {{ project.id }} Ontology Project Guide
+
+This includes instructions for editing the {{ project.id }} ontology. 
+
+## Project Layout
+- Main development file is `src/ontology/{{ project.id }}-edit.obo`
+- individual terms checked out in `terms`
+
+## Querying ontology
+
+- To look at a specific term if you know the ID:
+    - `obo-grep.pl -r 'id: GO:0004177' src/ontology/{{ project.id }}-edit.obo`
+- All mentions of an ID
+    - `obo-grep.pl -r 'GO:0004177' src/ontology/{{ project.id }}-edit.obo`
+- Note that `obo-grep.pl` is in your PATH, no need to search for it    
+- Only search over `src/ontology/{{ project.id }}-edit.obo`
+- DO NOT bother doing your own greps over the file, or looking for other files, unless otherwise asked, you will just waste time.
+- ONLY use the methods above for searching the ontology
+
+## Before making edits
+- Read the request carefully and make a plan, especially if there is nuance
+- If related issues are mentioned read them: `gh issue view GITHUB-ISSUE-NUMBER`
+- if a PMID is mentioned in the issue, ALWAYS try and read it
+- ALWAYS check proposed parent terms for consistency
+- For terms that are compositional, check `src/patterns/dosdp-patterns/*.yaml`
+
+## Edits
+- IMPORTANT: Do not edit the edit file directly, it's large
+- Add edits should be made in the `terms/` folder
+- check out a term into `terms/`: `obo-checkout.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
+- This will create a single stanza obo file `terms/{{ project.id }}.obo` which you can easily edit
+- check back in: `obo-checkin.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
+- checking in will update the edit file and remove the file from terms
+- Commits are then made on go-edit.obo as appropriate
+- Note that `obo-checkin.pl` and `obo-checkin.pl` are in your PATH, no need to search for it    
+
+
+## OBO Format Guidelines
+- Term ID format: {{ project.id }}:NNNNNNN (7-digit number)
+- Handling New Term Requests (NTRs):
+  - New terms start  {{ project.id }}:777xxxx
+  - Do do `grep id: {{ project.id }}:777 src/ontology/{{ project.id }}-edit.obo` to check for clashes
+- Each term requires: id, name, namespace, definition with references
+- Never guess {{ project.id }} IDs, use search tools above to determine actual term
+- Never guess PMIDs for references, do a web search if needed
+- Use standard relationship types: is_a, part_of, has_part, etc.
+- Follow existing term patterns for consistency
+
+## GitHub Contribution Process
+- Check existing terms before adding new ones
+- For new terms: provide name, definition, place in hierarchy, and references
+- Include PMIDs for all assertions
+- Follow naming conventions from parent terms
+- always commit in a branch, e.g. issue-NNN
+- always make clear detailed commit messages, saying what you did and why
+- always sign your commits
+- File PRs with clear descriptions, and sign your PR
+
+## Handling GitHub issues and requests
+- Use `gh` to read and write issues/PRs
+- Sign all commits and PRs as `@dragon-ai-agent`
+
