@@ -1,6 +1,6 @@
 .PHONY: build push
 
-IMAGE_NAME = ontology-coder
+IMAGE_NAME = odk-ai
 TAG = latest
 
 #BUILD_OPTS = --no-cache
@@ -11,7 +11,7 @@ build:
 
 push: build
 	docker tag $(IMAGE_NAME):$(TAG) cjmungall/$(IMAGE_NAME):$(TAG)
-	docker push cjmungall/$(IMAGE_NAME):$(TAG)
+	docker push cmungall/$(IMAGE_NAME):$(TAG)
 
 run:
 	docker run -it --rm $(IMAGE_NAME):$(TAG)

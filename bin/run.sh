@@ -48,7 +48,7 @@ if [ -n "$ODK_SSH_AUTH_SOCKET" ]; then
 fi
 
 # we diverge from ODL here
-ODK_IMAGE=ontology-coder
+ODK_IMAGE=odk-ai
 TAG_IN_IMAGE=$(echo $ODK_IMAGE | awk -F':' '{ print $2 }')
 if [ -n "$TAG_IN_IMAGE" ]; then
   # Override ODK_TAG env var if IMAGE already includes a tag

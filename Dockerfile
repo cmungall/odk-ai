@@ -11,17 +11,27 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     curl \
     liblzma-dev \
+    software-properties-common \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pyenv
-RUN curl https://pyenv.run | bash
-ENV PYENV_ROOT /root/.pyenv
-ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+# Set noninteractive installation
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
 
-# Install Python 3.11 with pyenv and set as global
-RUN pyenv install 3.11.9 && \
-    pyenv global 3.11.9
+# Install Python 3.11 directly
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.11 python3.11-venv python3.11-dev python3-pip tzdata && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set Python 3.11 as default
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 && \
+    update-alternatives --set python3 /usr/bin/python3.11 && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
+    update-alternatives --set python /usr/bin/python3.11 && \
+    ln -sf /usr/bin/python3.11 /usr/local/bin/python
 
 # Install Node.js using NVM
 ENV NVM_DIR=/root/.nvm
@@ -38,18 +48,17 @@ ENV PATH=$NVM_DIR/versions/node/v18.19.1/bin:$PATH
 RUN . "$NVM_DIR/nvm.sh" && npm install -g @anthropic-ai/claude-code 
 
 # Make sure pip is up to date
-RUN pip install --upgrade pip
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 && \
+    python3.11 -m pip install --upgrade pip
 
-# Install Aurelian at build time as requested
-#COPY aurelian-install.sh /tmp/
-#RUN chmod +x /tmp/aurelian-install.sh && /tmp/aurelian-install.sh
-RUN pip install aurelian
-
-# astroid seems to want an older version of wrapt
-RUN pip install "wrapt>=1.17.2"
+# Install Python packages
+RUN python3.11 -m pip install aurelian jinja2-cli "wrapt>=1.17.2"
 
 # #export LOGFIRE_SEND_TO_LOGFIRE=false
 ENV LOGFIRE_SEND_TO_LOGFIRE=false
+
+# copy the template
+COPY template/CLAUDE.md.jinja2 /root/CLAUDE.md.jinja2
 
 # make sure we have the latest obo-scripts
 RUN cd /tools/ && rm -rf obo-scripts && git clone https://github.com/cmungall/obo-scripts

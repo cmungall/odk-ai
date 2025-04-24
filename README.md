@@ -1,8 +1,8 @@
-# ontology-coder
+# odk-ai
 
 Docker container for running claude-code with ontologies. This is designed to be executed either interactively or in "headless" mode.
 
-The container extends ODK, which means any tool available to ODK (e.g. robot) is avaialble for `claude-code` to use.
+The container extends ODK, which means any tool available to ODK (e.g. robot) is available for `claude-code` to use.
 
 __CAVEATS__
 
@@ -18,9 +18,9 @@ Images are pushed to `cmungall/odk-ai` (https://hub.docker.com/r/cmungall/odk-ai
 
 ## Running
 
-Use `run.sh` (DOES NOT WORK), or just do this:
+Use `run.sh`, or just do this:
 
-`docker run -v $PWD:/work -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY -it --rm ontology-coder:latest bash`
+`docker run -v $PWD:/work -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY -it --rm odk-ai:latest bash`
 
 TODO: 
 
