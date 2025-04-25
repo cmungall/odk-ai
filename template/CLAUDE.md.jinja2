@@ -28,10 +28,13 @@ This includes instructions for editing the {{ project.id }} ontology.
 - IMPORTANT: Do not edit the edit file directly, it's large
 - Add edits should be made in the `terms/` folder
 - check out a term into `terms/`: `obo-checkout.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
-- This will create a single stanza obo file `terms/{{ project.id }}.obo` which you can easily edit
+- This will create a single stanza obo files `terms/{{ project.id }}_1234567.obo` which you can easily edit
+     - (note the colon is replaced with an underscore)
 - check back in: `obo-checkin.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
-- checking in will update the edit file and remove the file from terms
-- Commits are then made on go-edit.obo as appropriate
+- if you like you can edit multiple terms in one batch, e.g. `terms/my_batch.obo`
+     - `obo-checkout.pl src/ontology/{{ project.id }}-edit.obo terms/my_batch.obo`
+- checking in will update the edit file and remove the file from `terms/`
+- Commits are then made on src/ontology/{{ project.id }}-edit.obo as appropriate
 - Note that `obo-checkin.pl` and `obo-checkin.pl` are in your PATH, no need to search for it    
 
 
@@ -59,4 +62,3 @@ This includes instructions for editing the {{ project.id }} ontology.
 ## Handling GitHub issues and requests
 - Use `gh` to read and write issues/PRs
 - Sign all commits and PRs as `@dragon-ai-agent`
-

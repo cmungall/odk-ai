@@ -59,6 +59,8 @@ ENV LOGFIRE_SEND_TO_LOGFIRE=false
 
 # copy the template
 COPY template/CLAUDE.md.jinja2 /root/CLAUDE.md.jinja2
+# recursively copy the template
+COPY template/ /root/template/
 
 # make sure we have the latest obo-scripts
 RUN cd /tools/ && rm -rf obo-scripts && git clone https://github.com/cmungall/obo-scripts
