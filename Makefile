@@ -21,3 +21,15 @@ push: build
 
 run:
 	docker run -it --rm $(IMAGE_NAME):$(TAG)
+
+test:
+	cd scratch && docker run -v $PWD:/work -e ANTHROPIC_API_KEY=$$ANTHROPIC_API_KEY -it --rm odk-ai:latest bash
+
+# e.g. test-repos/obophenotype/uberon
+# git clone https://github.com/obophenotype/uberon
+test-repos/%:
+	cd test-repos && git clone https://github.com/$*
+	
+	
+	
+	
