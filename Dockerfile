@@ -65,5 +65,14 @@ RUN cd /tools/ && rm -rf obo-scripts && git clone https://github.com/cmungall/ob
 
 ENV PATH=$PATH:/tools/obo-scripts/
 
+# Copy entrypoint script
+COPY bin/entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
 # Set working directory
 WORKDIR /work
+
+# Default command
+CMD ["bash"]
