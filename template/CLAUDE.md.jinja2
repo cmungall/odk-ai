@@ -1,19 +1,19 @@
-# {{ project.id }} Ontology Project Guide
+# {{ project_id }} Ontology Project Guide
 
-This includes instructions for editing the {{ project.id }} ontology. 
+This includes instructions for editing the {{ project_id }} ontology. 
 
 ## Project Layout
-- Main development file is `src/ontology/{{ project.id }}-edit.obo`
+- Main development file is `src/ontology/{{ project_id }}-edit.obo`
 - individual terms checked out in `terms`
 
 ## Querying ontology
 
 - To look at a specific term if you know the ID:
-    - `obo-grep.pl -r 'id: GO:0004177' src/ontology/{{ project.id }}-edit.obo`
+    - `obo-grep.pl -r 'id: GO:0004177' src/ontology/{{ project_id }}-edit.obo`
 - All mentions of an ID
-    - `obo-grep.pl -r 'GO:0004177' src/ontology/{{ project.id }}-edit.obo`
+    - `obo-grep.pl -r 'GO:0004177' src/ontology/{{ project_id }}-edit.obo`
 - Note that `obo-grep.pl` is in your PATH, no need to search for it    
-- Only search over `src/ontology/{{ project.id }}-edit.obo`
+- Only search over `src/ontology/{{ project_id }}-edit.obo`
 - DO NOT bother doing your own greps over the file, or looking for other files, unless otherwise asked, you will just waste time.
 - ONLY use the methods above for searching the ontology
 
@@ -27,27 +27,31 @@ This includes instructions for editing the {{ project.id }} ontology.
 ## Edits
 - IMPORTANT: Do not edit the edit file directly, it's large
 - Add edits should be made in the `terms/` folder
-- check out a term into `terms/`: `obo-checkout.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
-- This will create a single stanza obo files `terms/{{ project.id }}_1234567.obo` which you can easily edit
+- check out a term into `terms/`: `obo-checkout.pl src/ontology/{{ project_id }}-edit.obo {{ project_id }}:1234567 [OTHER IDS]`
+- This will create a single stanza obo files `terms/{{ project_id }}_1234567.obo` which you can easily edit
      - (note the colon is replaced with an underscore)
-- check back in: `obo-checkin.pl src/ontology/{{ project.id }}-edit.obo {{ project.id }}:1234567 [OTHER IDS]`
+- check back in: `obo-checkin.pl src/ontology/{{ project_id }}-edit.obo {{ project_id }}:1234567 [OTHER IDS]`
 - if you like you can edit multiple terms in one batch, e.g. `terms/my_batch.obo`
-     - `obo-checkout.pl src/ontology/{{ project.id }}-edit.obo terms/my_batch.obo`
+     - `obo-checkout.pl src/ontology/{{ project_id }}-edit.obo terms/my_batch.obo`
 - checking in will update the edit file and remove the file from `terms/`
-- Commits are then made on src/ontology/{{ project.id }}-edit.obo as appropriate
+- Commits are then made on src/ontology/{{ project_id }}-edit.obo as appropriate
 - Note that `obo-checkin.pl` and `obo-checkin.pl` are in your PATH, no need to search for it    
 
 
 ## OBO Format Guidelines
-- Term ID format: {{ project.id }}:NNNNNNN (7-digit number)
+- Term ID format: {{ project_id }}:NNNNNNN (7-digit number)
 - Handling New Term Requests (NTRs):
-  - New terms start  {{ project.id }}:777xxxx
-  - Do do `grep id: {{ project.id }}:777 src/ontology/{{ project.id }}-edit.obo` to check for clashes
+  - New terms start  {{ project_id }}:777xxxx
+  - Do do `grep id: {{ project_id }}:777 src/ontology/{{ project_id }}-edit.obo` to check for clashes
 - Each term requires: id, name, namespace, definition with references
-- Never guess {{ project.id }} IDs, use search tools above to determine actual term
+- Never guess {{ project_id }} IDs, use search tools above to determine actual term
 - Never guess PMIDs for references, do a web search if needed
 - Use standard relationship types: is_a, part_of, has_part, etc.
 - Follow existing term patterns for consistency
+
+## Publications
+- Run the command `aurelian fulltext <PMID:nnn>` to fetch full text for a publication. A doi or URL can also be used
+- You should cite publications appropriately, e.g. `def: "...." [PMID:nnnn, doi:mmmm]
 
 ## GitHub Contribution Process
 - Check existing terms before adding new ones

@@ -61,6 +61,19 @@ Example of a PR created by Claude:
 
 * [uberon#3508](https://github.com/obophenotype/uberon/pull/3508)
 
+## Preserving configs
+
+After authentication in Docker
+
+`cp -pr ~/.config .`
+`cp ~/.claude.json .`
+
+Then the next time you start the container
+
+`cp -pr .config ~`
+`cp .claude.json ~`
+
+TODO - better way to persist
 
 ## TODO
 
