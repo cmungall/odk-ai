@@ -43,7 +43,7 @@ Darwin)
     ;;
 esac
 ODK_SSH_BIND=
-if [ -n "$ODK_SSH_AUTH_SOCKET" ]; then
+if [ -n "$ODK_SSH_AUTH_SOCKET" ] && [ -S "$ODK_SSH_AUTH_SOCKET" ]; then
     ODK_SSH_BIND=",$ODK_SSH_AUTH_SOCKET:/run/host-services/ssh-auth.sock"
 fi
 
@@ -80,7 +80,10 @@ if [ x$ODK_DEBUG = xyes ]; then
 fi
 rm -f tmp/debug.log
 
-VOLUME_BIND=$PWD/../../:/work$ODK_SSH_BIND
+VOLUME_BIND="$PWD/../../:/work"
+if [ -n "$ODK_SSH_BIND" ]; then
+    VOLUME_BIND="$VOLUME_BIND$ODK_SSH_BIND"
+fi
 WORK_DIR=/work/src/ontology
 
 if [ -n "$ODK_BINDS" ]; then
@@ -98,7 +101,8 @@ else
     BIND_OPTIONS="-v $(echo $VOLUME_BIND | sed 's/,/ -v /')"
     docker run $ODK_DOCKER_OPTIONS $BIND_OPTIONS -w $WORK_DIR \
         -e ROBOT_JAVA_ARGS="$ODK_JAVA_OPTS" -e JAVA_OPTS="$ODK_JAVA_OPTS" -e SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock -e ODK_USER_ID=$ODK_USER_ID -e ODK_GROUP_ID=$ODK_GROUP_ID -e ODK_DEBUG=$ODK_DEBUG \
-        --rm -ti cmungall/$ODK_IMAGE:$ODK_TAG $TIMECMD "$@"
+        -e CBORG_API_KEY=${CBORG_API_KEY:-} \
+        --rm -ti $ODK_IMAGE:$ODK_TAG $TIMECMD "$@"
 fi
 
 case "$@" in

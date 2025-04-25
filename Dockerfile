@@ -44,15 +44,34 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
 # Add node and npm to path
 ENV PATH=$NVM_DIR/versions/node/v18.19.1/bin:$PATH
 
-# Install claude-code
-RUN . "$NVM_DIR/nvm.sh" && npm install -g @anthropic-ai/claude-code 
+# Setup pnpm and bun
+ENV SHELL=/bin/bash
+ENV PNPM_HOME="/root/bin"
+ENV BUN_INSTALL="/root/.bun"
+ENV PATH="$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
 
-# Make sure pip is up to date
-RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 && \
-    python3.11 -m pip install --upgrade pip
+# Install pnpm
+RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
 
-# Install Python packages
-RUN python3.11 -m pip install aurelian jinja2-cli "wrapt>=1.17.2"
+# Install bun
+RUN curl -fsSL https://bun.sh/install | bash -
+
+# Clone and install cborg-code permanently using token
+# Pass GH_TOKEN as a build arg: docker build --build-arg GH_TOKEN=your_token_here ...
+ARG GH_TOKEN
+RUN mkdir -p /tools/cborg && \
+    cd /tools/cborg && \
+    git clone https://${GH_TOKEN}@github.com/lbnl-science-it/cborg-code.git . && \
+    pnpm install && \
+    bun build src/entrypoints/cli.tsx --minify --outfile cli.mjs --target=node && \
+    pnpm link --global
+
+# Pre-configure cborg-code with default settings
+RUN mkdir -p /root/.config/cborg-code && \
+    echo '{"model":"anthropic/claude-sonnet","smallModel":"anthropic/claude-haiku"}' > /root/.config/cborg-code/config.json
+
+# Simplify pip installations to avoid build errors
+RUN python3.11 -m pip install jinja2-cli --break-system-packages
 
 # #export LOGFIRE_SEND_TO_LOGFIRE=false
 ENV LOGFIRE_SEND_TO_LOGFIRE=false
