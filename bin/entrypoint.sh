@@ -15,6 +15,11 @@ else
   echo "CLAUDE.md already exists, will not overwrite"
 fi
 
+# cborg-code is now permanently installed in the Docker image
+# Display a message about cborg-code usage
+#echo "cborg-code is pre-installed. Use it with:"
+#echo "  export CBORG_API_KEY=your-api-key"
+#echo "  cborg-code"
 # Copy template files if they don't exist in the working directory
 echo "Copying templates to working directory (skipping existing files and *.jinja2)..."
 if [ -d /root/template ]; then

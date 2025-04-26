@@ -7,7 +7,13 @@ TAG = latest
 BUILD_OPTS = 
 
 build:
-	docker build $(BUILD_OPTS) -t $(IMAGE_NAME):$(TAG) .
+	@if [ -z "$$GH_TOKEN" ]; then \
+		echo "ERROR: GH_TOKEN environment variable is not set"; \
+		echo "Please set it with: export GH_TOKEN=your_github_token"; \
+		echo "You can create a token at https://github.com/settings/tokens"; \
+		exit 1; \
+	fi
+	docker build $(BUILD_OPTS) --build-arg GH_TOKEN=$(GH_TOKEN) -t $(IMAGE_NAME):$(TAG) .
 
 push: build
 	docker tag $(IMAGE_NAME):$(TAG) cjmungall/$(IMAGE_NAME):$(TAG)
