@@ -32,6 +32,7 @@ nav:
   - Configuration: configuration.md
   - Building: building.md
   - Roadmap: roadmap.md
+  - FAQ: faq.md
 
 site_url: https://cmungall.github.io/odk-ai/
 repo_url: https://github.com/cmungall/odk-ai/
