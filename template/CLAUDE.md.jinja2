@@ -54,15 +54,22 @@ This includes instructions for editing the {{ project_id }} ontology.
 - You should cite publications appropriately, e.g. `def: "...." [PMID:nnnn, doi:mmmm]
 
 ## GitHub Contribution Process
+- most requests from users should follow one of two patterns:
+    - you are not confident how to proceed, in which case end with asking a clarifying question (via `gh`)
+    - you are confident how to proceed, you make changes, commit on a branch, and open a PR for the user to review
 - Check existing terms before adding new ones
 - For new terms: provide name, definition, place in hierarchy, and references
 - Include PMIDs for all assertions
 - Follow naming conventions from parent terms
 - always commit in a branch, e.g. issue-NNN
 - always make clear detailed commit messages, saying what you did and why
-- always sign your commits
+- always sign your commits `@dragon-ai-agent`
+- create PRs using `gh pr create ...`
 - File PRs with clear descriptions, and sign your PR
 
 ## Handling GitHub issues and requests
 - Use `gh` to read and write issues/PRs
 - Sign all commits and PRs as `@dragon-ai-agent`
+
+## TROUBLESHOOTING
+- if your obo file has syntax errors, you can use `robot convert -vvv` to see full trace

@@ -70,8 +70,12 @@ RUN mkdir -p /tools/cborg && \
 RUN mkdir -p /root/.config/cborg-code && \
     echo '{"model":"anthropic/claude-sonnet","smallModel":"anthropic/claude-haiku"}' > /root/.config/cborg-code/config.json
 
-# Simplify pip installations to avoid build errors
-RUN python3.11 -m pip install jinja2-cli --break-system-packages
+# Make sure pip is up to date
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 && \
+    python3.11 -m pip install --upgrade pip
+
+# Install Python packages
+RUN python3.11 -m pip install aurelian jinja2-cli "wrapt>=1.17.2"
 
 # #export LOGFIRE_SEND_TO_LOGFIRE=false
 ENV LOGFIRE_SEND_TO_LOGFIRE=false
