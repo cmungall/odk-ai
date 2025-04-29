@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/972185456.svg)](https://doi.org/10.5281/zenodo.15300287)
+
+
 # ODK-AI: Coding Ontologies Using AI Tools
 
 ODK-AI is a Docker container for running claude-code (and in future, similar tools) with ontologies.
