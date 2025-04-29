@@ -95,7 +95,7 @@ After authentication, you can interact with Claude directly through the terminal
 
 For best experience, type
 
-`gh auth`
+`gh auth login`
 
 And follow the instructions to authenticate. this will allow Claude Code to create PRs and comment on issues/PRs on your behalf.
 

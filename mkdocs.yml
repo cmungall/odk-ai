@@ -20,9 +20,15 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search
+  
 
 nav:
   - Home: index.md
@@ -31,6 +37,10 @@ nav:
   - Headless Mode: headless-mode.md
   - Configuration: configuration.md
   - Building: building.md
+  - How-Tos:
+    - Create an Ontology de-novo: how-tos/de-novo-ontology.md
+    - Multi-Account: how-tos/multi-account.md
+    - Set up GitHub Actions: how-tos/github-actions.md
   - Roadmap: roadmap.md
   - FAQ: faq.md
 

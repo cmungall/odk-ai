@@ -13,10 +13,10 @@ build:
 		echo "You can create a token at https://github.com/settings/tokens"; \
 		exit 1; \
 	fi
-	docker build $(BUILD_OPTS) --build-arg GH_TOKEN=$(GH_TOKEN) -t $(IMAGE_NAME):$(TAG) .
+	docker build $(BUILD_OPTS) --build-arg GH_TOKEN=$(GH_TOKEN) -t cmungall/$(IMAGE_NAME):$(TAG) .
 
 push: build
-	docker tag $(IMAGE_NAME):$(TAG) cjmungall/$(IMAGE_NAME):$(TAG)
+	docker tag $(IMAGE_NAME):$(TAG) cmungall/$(IMAGE_NAME):$(TAG)
 	docker push cmungall/$(IMAGE_NAME):$(TAG)
 
 run:

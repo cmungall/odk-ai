@@ -44,6 +44,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
 # Add node and npm to path
 ENV PATH=$NVM_DIR/versions/node/v18.19.1/bin:$PATH
 
+# Install claude-code
+RUN . "$NVM_DIR/nvm.sh" && npm install -g @anthropic-ai/claude-code 
+
 # Setup pnpm and bun
 ENV SHELL=/bin/bash
 ENV PNPM_HOME="/root/bin"
@@ -67,8 +70,8 @@ RUN mkdir -p /tools/cborg && \
     pnpm link --global
 
 # Pre-configure cborg-code with default settings
-RUN mkdir -p /root/.config/cborg-code && \
-    echo '{"model":"anthropic/claude-sonnet","smallModel":"anthropic/claude-haiku"}' > /root/.config/cborg-code/config.json
+#RUN mkdir -p /root/.config/cborg-code && \
+#    echo '{"model":"anthropic/claude-sonnet","smallModel":"anthropic/claude-haiku"}' > /root/.config/cborg-code/config.json
 
 # Make sure pip is up to date
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 && \
@@ -84,6 +87,13 @@ ENV LOGFIRE_SEND_TO_LOGFIRE=false
 COPY template/CLAUDE.md.jinja2 /root/CLAUDE.md.jinja2
 # recursively copy the template
 COPY template/ /root/template/
+
+# Custom .bashrc additions
+COPY bin/git-bashrc-config.sh /tmp/git-bashrc-config.sh
+RUN cat /tmp/git-bashrc-config.sh >> ~/.bashrc
+
+# Make sure git and bash-completion are installed
+# RUN apt-get update && apt-get install -y  bash-completion
 
 # make sure we have the latest obo-scripts
 RUN cd /tools/ && rm -rf obo-scripts && git clone https://github.com/cmungall/obo-scripts
