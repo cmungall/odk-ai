@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://cmungall.github.io/odk-ai/how-tos/set-up-actions/">
+        <link rel="canonical" href="https://cmungall.github.io/odk-ai/how-tos/de-novo-ontology/">
       
       
+        <link rel="prev" href="../../building/">
+      
+      
+        <link rel="next" href="../multi-account/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Set up actions - ODK-AI</title>
+        <title>Create an Ontology de-novo - ODK-AI</title>
       
     
     
@@ -69,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#creating-an-ontology-de-novo" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Set up actions
+              Create an Ontology de-novo
             
           </span>
         </div>
@@ -350,6 +359,208 @@
       
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How-Tos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Create an Ontology de-novo
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create an Ontology de-novo
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the repo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-the-upper-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating the upper levels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-a-branch-interactive-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating a branch (interactive mode)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-a-branch-headless-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating a branch (headless mode)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set up GitHub Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -407,6 +618,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the repo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-the-upper-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating the upper levels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-a-branch-interactive-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating a branch (interactive mode)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#populating-a-branch-headless-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Populating a branch (headless mode)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -425,9 +682,18 @@
   
 
 
-  <h1>Set up actions</h1>
+<h1 id="creating-an-ontology-de-novo">Creating an ontology de-novo</h1>
+<h2 id="creating-the-repo">Creating the repo</h2>
+<div style="position: relative; padding-bottom: 64.67065868263472%; height: 0;"><iframe src="https://www.loom.com/embed/145576729875431f9bdb2bd6e2a13ec7?sid=ba07964d-9774-47a0-b678-7898cb5b0940" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+<h2 id="populating-the-upper-levels">Populating the upper levels</h2>
+<div style="position: relative; padding-bottom: 64.67065868263472%; height: 0;"><iframe src="https://www.loom.com/embed/1b55d963cd8c4ea695edcb139efd9af7?sid=ee564353-d786-42d4-81e4-3074dbfc434d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+<h2 id="populating-a-branch-interactive-mode">Populating a branch (interactive mode)</h2>
+<div style="position: relative; padding-bottom: 64.67065868263472%; height: 0;"><iframe src="https://www.loom.com/embed/a1cb690bfc5e4d22b79abdacf5c64aaa?sid=ed445e30-be63-4881-aa87-6fa19b35c2e9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+<h2 id="populating-a-branch-headless-mode">Populating a branch (headless mode)</h2>
+<div style="position: relative; padding-bottom: 64.67065868263472%; height: 0;"><iframe src="https://www.loom.com/embed/145009c0e396450b975607f3b4bafcfe?sid=dfde2f4e-d76b-42ba-8a89-36144eadd4f8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 
 
