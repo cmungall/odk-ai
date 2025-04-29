@@ -1,0 +1,31 @@
+{
+  "numStartups": 2,
+  "autoUpdaterStatus": "enabled",
+  "primaryProvider": "cborg",
+  "largeModelName": "anthropic/claude-sonnet:latest",
+  "largeModelBaseURL": "https://api.cborg.lbl.gov/v1",
+    "largeModelMaxTokens": null,
+  "smallModelName": "anthropic/claude-sonnet:latest",
+  "smallModelBaseURL": "https://api.cborg.lbl.gov/v1",
+    "smallModelMaxTokens": null,
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "0.0.33",
+    "projects": {
+    "/work": {
+      "allowedTools": [],
+      "context": {},
+      "history": [],
+      "dontCrawlDirectory": false,
+      "enableArchitectTool": false,
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "approvedMcprcServers": [],
+      "rejectedMcprcServers": [],
+      "hasTrustDialogAccepted": true,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastDuration": 138622,
+      "lastSessionId": "af615c86-f23e-47e0-9fdc-a971f921d230"
+    }
+  }
+}
