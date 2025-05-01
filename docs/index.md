@@ -3,6 +3,8 @@
 ODK-AI is a Docker container for running claude-code (and in future, similar tools) with ontologies.
 It is designed to be executed either interactively or in "headless" mode.
 
+![img](figures/intro.svg)
+
 For more details, see [this tutorial (in progress)](https://docs.google.com/presentation/d/1_ciRsRqs0hDtjcFBwZ9UhQhiQ3tlB_dOfQVEp5QR8LU/edit?slide=id.g24560ef6bb7_0_84#slide=id.g24560ef6bb7_0_84)
 
 The container extends [ODK](https://github.com/INCATools/ontology-development-kit/), which means any tool available to ODK (e.g. ROBOT) is available for `claude-code` to use.
@@ -47,7 +49,8 @@ ODK-AI is designed to help with any piece of this that involves interacting with
 Get up and running with:
 
 ```bash
-docker run -v $PWD:/work -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY -it --rm cmungall/odk-ai:latest
+export PATH="$PATH:$HOME/repos/odk-ai/bin"
+ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY odkai.sh
 ```
 
 See the [Getting Started](getting-started.md) guide for more details.

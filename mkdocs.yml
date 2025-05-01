@@ -38,6 +38,7 @@ nav:
   - Configuration: configuration.md
   - Building: building.md
   - How-Tos:
+    - Write AI instructions: how-tos/write-ai-instructions.md
     - Create an Ontology de-novo: how-tos/de-novo-ontology.md
     - Multi-Account: how-tos/multi-account.md
     - Set up GitHub Actions: how-tos/github-actions.md

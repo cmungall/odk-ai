@@ -1,5 +1,9 @@
 # Headless Mode
 
+!!! warning "Proceed with caution!"
+    Using coding tools in headless mode with long running processes can
+    lead to racking up API charges
+
 ODK-AI can be used in a non-interactive headless mode, which is useful for:
 
 - Creating ontologies in YOLO mode
